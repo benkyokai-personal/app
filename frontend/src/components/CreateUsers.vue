@@ -37,7 +37,7 @@ export default {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log("errorCode: " + errorCode);
-             console.log("errorMessage: " + errorMessage);
+          console.log("errorMessage: " + errorMessage);
           alert("作成失敗");
         });
     },
