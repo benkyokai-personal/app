@@ -19,6 +19,11 @@ const routes = [
     name: "createUsers",
     component: () => import("../components/CreateUsers"),
   },
+  {
+    path: "/home",
+    name: "home",
+    component: () => import("../components/Home"),
+  },
 ];
 
 const router = new VueRouter({

@@ -11,6 +11,22 @@ datasource db {
 
 model User {
   id    Int     @default(autoincrement()) @id
-  email String  @unique
-  user_name String
+  uuid String   @unique
+  email String
+  userName String 
+  createDatetime DateTime @default(now())
+  updateDatetime DateTime @updatedAt
+  code Code[]
+}
+
+model Code {
+  id    Int     @default(autoincrement()) @id
+  user User @relation(fields: [userId],references: [id])
+  userId Int
+  manageId Int
+  code String
+  createDatetime DateTime @default(now())
+  updateDatetime DateTime @updatedAt
+
+  @@unique([userId,manageId])
 }

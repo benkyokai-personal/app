@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     editor: Object,
     language: String,
+    userInfo: Object,
   },
   getters: {},
   mutations: {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     changeLanguage(state, language) {
       state.language = language;
+    },
+    updateUserInfo(state, userInfo) {
+      state.userInfo = userInfo;
     },
   },
   actions: {},

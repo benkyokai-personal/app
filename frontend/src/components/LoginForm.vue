@@ -34,21 +34,24 @@ export default {
     pw: "",
   }),
   methods: {
-    login: function () {
-      signInWithEmailAndPassword(auth, this.email, this.pw)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("create user success." + user);
-          this.$router.push("/editor");
-        })
-        .catch((error) => {
-          this.$router.push("/editor");
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log("errorCode: " + errorCode);
-          console.log("errorMessage: " + errorMessage);
-          alert("認証失敗");
-        });
+    async login() {
+      try {
+        const userInfo = await signInWithEmailAndPassword(
+          auth,
+          this.email,
+          this.pw
+        );
+
+        this.$store.commit("updateUserInfo", userInfo);
+        this.$router.push("/Home");
+      } catch (error) {
+        this.$router.push("/Home");
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("errorCode: " + errorCode);
+        console.log("errorMessage: " + errorMessage);
+        alert("認証失敗");
+      }
     },
     createUser() {
       this.$router.push("/create");

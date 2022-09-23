@@ -17,29 +17,40 @@
 <script>
 import firebaseApp from "../main";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import axios from "axios";
 const auth = getAuth(firebaseApp);
 export default {
   name: "createUsers",
   data: () => ({
     email: "",
     pw: "",
+    userDetail: "",
   }),
   methods: {
-    createUser: function () {
-      createUserWithEmailAndPassword(auth, this.email, this.pw)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("create user success." + user);
-          alert("作成成功");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log("errorCode: " + errorCode);
-          console.log("errorMessage: " + errorMessage);
-          alert("作成失敗");
+    async createUser() {
+      try {
+        this.userDetail = await createUserWithEmailAndPassword(
+          auth,
+          this.email,
+          this.pw
+        );
+      } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("errorCode: " + errorCode);
+        console.log("errorMessage: " + errorMessage);
+        alert("作成失敗");
+      }
+      try {
+        console.log(this.userDetail);
+        await axios.post("/v1/user", {
+          email: this.email,
+          userName: "sample",
+          uuid: this.userDetail.user.uid,
         });
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 };

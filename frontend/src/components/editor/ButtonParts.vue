@@ -19,6 +19,10 @@ export default {
   },
   methods: {
     async execProgram() {
+      const a = await axios.get(`/v1/user`);
+      console.log(a);
+      // const a = await this.$axios.get("/user");
+      // console.log(a);
       const language = this.$store.state.language;
       this.editor = this.$store.state.editor;
       console.log(this.editor.getValue());

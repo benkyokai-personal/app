@@ -9,4 +9,12 @@ export class UserService {
   async getUsers(): Promise<User[]> {
     return this.prisma.user.findMany();
   }
+
+  async createUser(data: Prisma.UserCreateInput): Promise<User> {
+    return this.prisma.user.create({ data });
+  }
+
+  async getUserCodeList(where: Prisma.UserWhereUniqueInput): Promise<User[]> {
+    return this.prisma.user.findMany({ where, include: { code: true } });
+  }
 }
