@@ -18,7 +18,7 @@ export class CodeController {
     });
   }
 
-  @Post('code')
+  @Post('save-code')
   async saveCode(@Body() body: SaveCodeRequestBody): Promise<Code> {
     return this.codeService.saveCode(body);
   }

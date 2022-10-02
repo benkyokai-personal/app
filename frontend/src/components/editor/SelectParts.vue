@@ -29,12 +29,17 @@ export default {
   name: "SelectParts",
   data() {
     return {
-      language: "Python",
+      language: "python",
       languageList: ["python", "c", "javascript"],
       editor: this.$store.state.editor,
     };
   },
-
+  created() {
+    this.editor = this.$store.state.editor;
+    this.editor.getSession().setMode(`ace/mode/${this.language}`);
+    this.$store.commit("bindEditor", this.editor);
+    this.$store.commit("changeLanguage", this.language);
+  },
   methods: {
     changeLanguage() {
       this.editor = this.$store.state.editor;

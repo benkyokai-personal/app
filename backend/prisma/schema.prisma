@@ -25,6 +25,7 @@ model Code {
   userId Int
   manageId Int
   code String
+  language String
   createDatetime DateTime @default(now())
   updateDatetime DateTime @updatedAt
 

@@ -13,6 +13,23 @@ export class CodeService {
   }
 
   async saveCode(data: Prisma.CodeUncheckedCreateInput): Promise<Code> {
-    return this.prisma.code.create({ data: data });
+    return this.prisma.code.upsert({
+      where: {
+        id: data.id,
+        userId_manageId: {
+          userId: data.userId,
+          manageId: data.manageId,
+        },
+      },
+      update: {
+        code: data.code,
+      },
+      create: {
+        userId: data.userId,
+        manageId: data.manageId,
+        code: data.code,
+        language: data.language,
+      },
+    });
   }
 }

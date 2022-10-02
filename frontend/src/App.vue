@@ -1,38 +1,38 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
+    <v-app-bar color="indigo accent-4" dark prominent app>
+      <v-app-bar-nav-icon
+        @click.stop="mydrawer = !mydrawer"
+      ></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </v-app-bar>
-
+    <v-navigation-drawer v-model="mydrawer" absolute bottom temporary>
+      <v-list nav dense>
+        <v-list-item-group
+          v-model="mygroup"
+          active-class="cyan--text text--accent-4"
+        >
+          <v-list-item>
+            <v-list-item-title>Vue.js</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-title>Vuetify</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-title>WordPress</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-title>Structured</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
       <router-view />
     </v-main>
@@ -44,7 +44,22 @@ export default {
   name: "App",
 
   data: () => ({
-    //
+    mydrawer: false,
+    mygroup: null,
   }),
 };
 </script>
+
+<style scoped>
+header {
+  height: 70px !important;
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+#editor {
+  z-index: 1;
+}
+</style>

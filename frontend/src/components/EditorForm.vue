@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="editor">
     <SelectParts></SelectParts>
     <EditorParts></EditorParts>
     <ButtonParts></ButtonParts>
@@ -20,3 +20,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.ace[data-v-047d6541] {
+  z-index: 1 !important;
+}
+</style>

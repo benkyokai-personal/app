@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-btn color="primary" @click="execProgram" class="exec-button">実行</v-btn>
+    <v-btn color="primary" @click="saveProgram">保存</v-btn>
     <v-textarea solo background-color="black" :value="result"> </v-textarea>
   </div>
 </template>
@@ -52,6 +53,15 @@ export default {
       );
       this.result = result.data.stdout;
       console.log(result);
+    },
+    async saveProgram() {
+      this.editor = this.$store.state.editor;
+      await axios.post(`/v1/save-code`, {
+        manageId: 1,
+        userId: 1,
+        code: this.editor.getValue(),
+        language: this.$store.state.language,
+      });
     },
   },
 };

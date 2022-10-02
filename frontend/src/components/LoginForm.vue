@@ -30,8 +30,8 @@ const auth = getAuth(firebaseApp);
 export default {
   name: "loginForm",
   data: () => ({
-    email: "",
-    pw: "",
+    email: "example@example.com",
+    pw: "password1234",
   }),
   methods: {
     async login() {
