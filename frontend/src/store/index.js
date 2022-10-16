@@ -8,6 +8,7 @@ export default new Vuex.Store({
     editor: Object,
     language: String,
     userInfo: Object,
+    userId: Number,
   },
   getters: {},
   mutations: {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     updateUserInfo(state, userInfo) {
       state.userInfo = userInfo;
+    },
+    updateUserId(state, userId) {
+      state.userId = userId;
     },
   },
   actions: {},

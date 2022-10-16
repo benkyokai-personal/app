@@ -10,7 +10,7 @@ const routes = [
     component: () => import("../components/LoginForm"),
   },
   {
-    path: "/editor",
+    path: "/editor/:manageId",
     name: "EditorForm",
     component: () => import("../components/EditorForm"),
   },
