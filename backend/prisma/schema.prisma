@@ -17,6 +17,7 @@ model User {
   createDatetime DateTime @default(now())
   updateDatetime DateTime @updatedAt
   code Code[]
+  userCompe UserCompe[]
 }
 
 model Code {
@@ -30,4 +31,30 @@ model Code {
   updateDatetime DateTime @updatedAt
 
   @@unique([userId,manageId])
+}
+
+model Compe{
+  id Int @default(autoincrement()) @id @unique
+  title String
+  contents String
+  testCase String
+  startDatetime DateTime
+  endDatetime DateTime
+  endFlg Boolean
+  compe UserCompe[]
+
+}
+
+model UserCompe{
+  id Int @default(autoincrement()) @id
+  compe Compe @relation(fields: [compeId],references: [id])
+  user User @relation(fields: [userId],references: [id])
+  userId Int
+  compeId Int
+  code String
+  language String
+  createDatetime DateTime @default(now())
+  updateDatetime DateTime @updatedAt
+
+  @@unique([id,userId,compeId])
 }

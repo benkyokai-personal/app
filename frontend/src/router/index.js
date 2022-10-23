@@ -24,6 +24,11 @@ const routes = [
     name: "home",
     component: () => import("../components/Home"),
   },
+  {
+    path: "/compe",
+    name: "compe",
+    component: () => import("../components/CompeInfo"),
+  },
 ];
 
 const router = new VueRouter({
