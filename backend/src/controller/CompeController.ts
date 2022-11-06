@@ -8,6 +8,6 @@ export class CompeController {
 
   @Get('compe')
   async getCompe(): Promise<Compe[]> {
-    return this.compeService.getCompe();
+    return await this.compeService.getCompe();
   }
 }

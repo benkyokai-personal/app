@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
+  url = "mysql://k8ya1kijmmwhubdu13w4:pscale_pw_ynjEqdGKlRS6flsuBzgwGpanFPt0EWfL42sS46Y5yhf@ap-northeast.connect.psdb.cloud/benkyokai-database?sslaccept=strict"
   referentialIntegrity = "prisma"
 }
 

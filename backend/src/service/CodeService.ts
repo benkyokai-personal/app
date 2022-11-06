@@ -9,11 +9,11 @@ export class CodeService {
   async getCode(
     where: Prisma.CodeUserIdManageIdCompoundUniqueInput,
   ): Promise<Code> {
-    return this.prisma.code.findFirst({ where });
+    return await this.prisma.code.findFirst({ where });
   }
 
   async saveCode(data: Prisma.CodeUncheckedCreateInput): Promise<Code> {
-    return this.prisma.code.upsert({
+    return await this.prisma.code.upsert({
       where: {
         id: data.id,
         userId_manageId: {

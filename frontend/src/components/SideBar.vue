@@ -46,6 +46,7 @@ export default {
       items: [
         { title: "Home", link: "/" },
         { title: "Compe", link: "/compe" },
+        { title: "editor", link: "/editor" },
       ],
       right: null,
     };
